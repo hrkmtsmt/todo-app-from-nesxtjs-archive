@@ -22,7 +22,7 @@ module.exports = {
             options: { presets: ['@babel/preset-env', '@babel/react'] },
           },
           {
-            loader: 'ts-loaderl',
+            loader: 'ts-loader',
             options: {
               configFile: tsconfig,
             },
@@ -42,7 +42,7 @@ module.exports = {
     port: 3000,
   },
   resolve: {
-    extentions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   target: 'web',
 };
