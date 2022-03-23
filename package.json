@@ -11,6 +11,9 @@
   "author": "hrkmtsmt",
   "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.5.2",
     "@reduxjs/toolkit": "^1.8.0",
     "nextjs": "^0.0.3",
     "react": "^17.0.2",
