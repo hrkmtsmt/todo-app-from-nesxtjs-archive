@@ -16,6 +16,7 @@ type Props = {
   content: React.ReactNode;
   onClickEdit: React.MouseEventHandler<HTMLButtonElement>;
   onClickDelete: React.MouseEventHandler<HTMLButtonElement>;
+  onClickCheckbox: React.MouseEventHandler<HTMLDivElement>;
 };
 
 const SecondaryActionWrappear = styled.div`
@@ -24,7 +25,8 @@ const SecondaryActionWrappear = styled.div`
 `;
 
 export const TodoListItem: React.VFC<Props> = (props) => {
-  const { checked, content, onClickEdit, onClickDelete } = props;
+  const { checked, content, onClickEdit, onClickDelete, onClickCheckbox } =
+    props;
 
   return (
     <ListItem
@@ -41,7 +43,7 @@ export const TodoListItem: React.VFC<Props> = (props) => {
       }
     >
       <ListItemButton>
-        <ListItemIcon>
+        <ListItemIcon onClick={onClickCheckbox}>
           <Checkbox checked={checked} />
         </ListItemIcon>
         <ListItemText primary={content} />
