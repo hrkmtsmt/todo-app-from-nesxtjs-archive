@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "This app written in React.",
   "scripts": {
-    "dev": "next dev"
+    "dev": "run-p next json-server",
+    "next": "next dev --port 8080",
+    "json-server": "json-server --watch src/db/db.json --port 3000"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.2",
     "@reduxjs/toolkit": "^1.8.0",
+    "axios": "^0.26.1",
     "next": "^12.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -27,6 +30,8 @@
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
+    "json-server": "^0.17.0",
+    "npm-run-all": "^4.1.5",
     "typescript": "^4.6.3"
   }
 }
