@@ -1,7 +1,26 @@
-import React from 'react';
-import { Test } from '@src/components/Test';
+import React, { useState } from 'react';
+import { AllTodos } from '@src/slices/types';
+import { todosApi } from '@src/api/todos';
+
+type ApiResponse<T> = Promise<T>;
 
 const Index = () => {
-  return <Test></Test>;
+  const [state, setState] = useState<AllTodos>();
+
+  const postData = {
+    todoTitle: 'This is sample todo.',
+    todoDetail: 'What are you doing?',
+    isChecked: false,
+  };
+
+  const onClickPost = async () => {
+    await todosApi.post(postData);
+    const result = await todosApi.getAll();
+    setState(result);
+    console.log(state);
+  };
+
+  return <button onClick={onClickPost}>Post</button>;
 };
+
 export default Index;
