@@ -1,0 +1,69 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "allTodos": [
+    {
+      "id": "thisissampleid!!",
+      "todoTitle": "This is sample todo.",
+      "todoDetail": "What are you doing?",
+      "isChecked": false
+    },
+    {
+      "id": "thecompletetodo!",
+      "todoTitle": "The complete todo!",
+      "todoDetail": "You con do it!",
+      "isChecked": true
+    },
+    {
+      "todoTitle": "This is sample todo.",
+      "todoDetail": "What are you doing?",
+      "isChecked": false,
+      "id": "QWSQOCM"
+    },
+    {
+      "todoTitle": "This is sample todo.",
+      "todoDetail": "What are you doing?",
+      "isChecked": false,
+      "id": "dyzV1d2"
+    },
+    {
+      "todoTitle": "This is sample todo.",
+      "todoDetail": "What are you doing?",
+      "isChecked": false,
+      "id": "VsKdE1_"
+    },
+    {
+      "todoTitle": "This is sample todo.",
+      "todoDetail": "What are you doing?",
+      "isChecked": false,
+      "id": "qtCWiIj"
+    },
+    {
+      "todoTitle": "This is sample todo.",
+      "todoDetail": "What are you doing?",
+      "isChecked": false,
+      "id": "l4dtypA"
+    },
+    {
+      "todoTitle": "This is sample todo.",
+      "todoDetail": "What are you doing?",
+      "isChecked": false,
+      "id": "K4MME3p"
+    }
+  ]
+}
