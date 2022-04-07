@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "run-p next json-server",
     "next": "next dev --port 8080",
-    "json-server": "json-server --watch src/db/db.json --port 3000"
+    "json-server": "json-server --watch src/db/db.json --routes src/db/routes.json --port 3000"
   },
   "repository": {
     "type": "git",
