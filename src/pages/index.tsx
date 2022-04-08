@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { AllTodos } from '@src/slices/types';
 import { todosApi } from '@src/api/todos';
 
-type ApiResponse<T> = Promise<T>;
-
 const Index = () => {
   const [state, setState] = useState<AllTodos>();
 
