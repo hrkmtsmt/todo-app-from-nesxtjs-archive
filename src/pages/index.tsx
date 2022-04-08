@@ -1,24 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { TodoList } from '@src/components/TodoList';
 import { AllTodos } from '@src/slices/types';
 import { todosApi } from '@src/api/todos';
 
 const Index = () => {
   const [state, setState] = useState<AllTodos>();
 
-  const postData = {
-    todoTitle: 'This is sample todo.',
-    todoDetail: 'What are you doing?',
-    isChecked: false,
-  };
+  useEffect(() => {
+    (async () => {
+      const result = await todosApi.getAll();
+      setState(result);
+    })();
+  }, []);
 
-  const onClickPost = async () => {
-    await todosApi.post(postData);
-    const result = await todosApi.getAll();
-    setState(result);
-    console.log(state);
-  };
-
-  return <button onClick={onClickPost}>Post</button>;
+  return (
+    <React.Fragment>
+      <TodoList
+        listHeaderTitle={'Incomplete Todo'}
+        completeStatus={false}
+        dataSource={state}
+        onClickCheckbox={() => alert()}
+        onClickEdit={() => alert()}
+        onClickDelete={() => alert()}
+      />
+      <TodoList
+        listHeaderTitle={'Complete Todo'}
+        completeStatus={true}
+        dataSource={state}
+        onClickCheckbox={() => alert()}
+        onClickEdit={() => alert()}
+        onClickDelete={() => alert()}
+      />
+    </React.Fragment>
+  );
 };
 
 export default Index;
