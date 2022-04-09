@@ -5,13 +5,14 @@ import AddIcon from '@mui/icons-material/Add';
 type Props = {
   onClickAdd: React.MouseEventHandler<HTMLButtonElement>;
   onChangeTitle: React.FormEventHandler<HTMLTextAreaElement | HTMLInputElement>;
-  onChangeDetails: React.FormEventHandler<
+  onChangeDetail: React.FormEventHandler<
     HTMLTextAreaElement | HTMLInputElement
   >;
+  disabled: boolean;
 };
 
 export const AddTodo: React.VFC<Props> = (props) => {
-  const { onClickAdd, onChangeTitle, onChangeDetails } = props;
+  const { onClickAdd, onChangeTitle, onChangeDetail, disabled } = props;
 
   return (
     <Box
@@ -29,7 +30,7 @@ export const AddTodo: React.VFC<Props> = (props) => {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            onChange={onChangeDetails}
+            onChange={onChangeDetail}
             required
             label={'Details'}
             rows={4}
@@ -40,6 +41,7 @@ export const AddTodo: React.VFC<Props> = (props) => {
         <Grid item xs={12}>
           <Button
             onClick={onClickAdd}
+            disabled={disabled}
             variant={'contained'}
             size={'large'}
             sx={{ width: '100%' }}
