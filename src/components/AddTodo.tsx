@@ -8,11 +8,20 @@ type Props = {
   onChangeDetail: React.FormEventHandler<
     HTMLTextAreaElement | HTMLInputElement
   >;
+  titleValue: string;
+  detailValue: string;
   disabled: boolean;
 };
 
 export const AddTodo: React.VFC<Props> = (props) => {
-  const { onClickAdd, onChangeTitle, onChangeDetail, disabled } = props;
+  const {
+    onClickAdd,
+    onChangeTitle,
+    onChangeDetail,
+    titleValue,
+    detailValue,
+    disabled,
+  } = props;
 
   return (
     <Box
@@ -23,6 +32,7 @@ export const AddTodo: React.VFC<Props> = (props) => {
         <Grid item xs={12}>
           <TextField
             onChange={onChangeTitle}
+            value={titleValue}
             required
             label={'Todo'}
             sx={{ width: '100%' }}
@@ -31,6 +41,7 @@ export const AddTodo: React.VFC<Props> = (props) => {
         <Grid item xs={12}>
           <TextField
             onChange={onChangeDetail}
+            value={detailValue}
             required
             label={'Details'}
             rows={4}

@@ -29,6 +29,8 @@ const Index = () => {
   const onClickAdd = async () => {
     await todosApi.post(data);
     await getAllTodosAndChangeState();
+    setTitle('');
+    setDetail('');
   };
 
   const onChangeTitle = (event) => {
@@ -51,6 +53,8 @@ const Index = () => {
       <AddTodo
         onChangeTitle={onChangeTitle}
         onChangeDetail={onChangeDetail}
+        titleValue={title}
+        detailValue={detail}
         onClickAdd={onClickAdd}
         disabled={isDisabled()}
       />
