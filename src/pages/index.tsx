@@ -41,12 +41,18 @@ const Index = () => {
     setDetail(value);
   };
 
+  const isDisabled = () => {
+    const result: boolean = title === '' || detail === '';
+    return result;
+  };
+
   return (
     <React.Fragment>
       <AddTodo
         onChangeTitle={onChangeTitle}
         onChangeDetail={onChangeDetail}
         onClickAdd={onClickAdd}
+        disabled={isDisabled()}
       />
       <TodoList
         listHeaderTitle={'Incomplete Todo'}
