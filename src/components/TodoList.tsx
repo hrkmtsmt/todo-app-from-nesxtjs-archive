@@ -2,17 +2,10 @@ import React from 'react';
 import { List, ListSubheader } from '@mui/material';
 import { Box } from '@mui/system';
 import { TodoListItem } from '@src/components/TodoListItem';
-
-type UUID = string;
-
-type TodoData = {
-  id: UUID;
-  content: string;
-  checked: boolean;
-};
+import type { AllTodos } from '@src/slices/types';
 
 type Props = {
-  dataSource: Array<TodoData>;
+  dataSource: AllTodos;
   listHeaderTitle: string;
   completeStatus: boolean;
   onClickEdit: React.MouseEventHandler<HTMLButtonElement>;
@@ -30,8 +23,8 @@ export const TodoList: React.VFC<Props> = (props) => {
     onClickCheckbox,
   } = props;
 
-  const todos = dataSource.filter(
-    (status) => status.checked === completeStatus
+  const todos = (dataSource || []).filter(
+    (state) => state.isChecked === completeStatus
   );
 
   return (
@@ -42,8 +35,9 @@ export const TodoList: React.VFC<Props> = (props) => {
           return (
             <TodoListItem
               key={todo.id}
-              checked={todo.checked}
-              content={todo.content}
+              id={todo.id}
+              checked={todo.isChecked}
+              todoTitle={todo.todoTitle}
               onClickEdit={onClickEdit}
               onClickDelete={onClickDelete}
               onClickCheckbox={onClickCheckbox}

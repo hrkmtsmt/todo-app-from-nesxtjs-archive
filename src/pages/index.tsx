@@ -9,6 +9,12 @@ const Index = () => {
   const [title, setTitle] = useState<string>('');
   const [detail, setDetail] = useState<string>('');
 
+  const data: PostTodo = {
+    todoTitle: title,
+    todoDetail: detail,
+    isChecked: false,
+  };
+
   const getAllTodosAndChangeState = async () => {
     const result = await todosApi.getAll();
     setState(result);
@@ -19,12 +25,6 @@ const Index = () => {
       await getAllTodosAndChangeState();
     })();
   }, []);
-
-  const data: PostTodo = {
-    todoTitle: title,
-    todoDetail: detail,
-    isChecked: false,
-  };
 
   const onClickAdd = async () => {
     await todosApi.post(data);
@@ -41,6 +41,12 @@ const Index = () => {
   const onChangeDetail = (event) => {
     const value = event.target.value;
     setDetail(value);
+  };
+
+  const onClickDelete = async (e) => {
+    console.log(e.currentTarget);
+    await todosApi.delete(e.currentTarget.dataset.id);
+    await getAllTodosAndChangeState();
   };
 
   const isDisabled = () => {
@@ -64,7 +70,7 @@ const Index = () => {
         dataSource={state}
         onClickCheckbox={() => alert()}
         onClickEdit={() => alert()}
-        onClickDelete={() => alert()}
+        onClickDelete={onClickDelete}
       />
       <TodoList
         listHeaderTitle={'Complete Todo'}
@@ -72,7 +78,7 @@ const Index = () => {
         dataSource={state}
         onClickCheckbox={() => alert()}
         onClickEdit={() => alert()}
-        onClickDelete={() => alert()}
+        onClickDelete={onClickDelete}
       />
     </React.Fragment>
   );

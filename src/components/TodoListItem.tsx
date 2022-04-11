@@ -12,8 +12,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import styled from '@emotion/styled';
 
 type Props = {
+  id: string;
   checked: boolean;
-  content: React.ReactNode;
+  todoTitle: React.ReactNode;
   onClickEdit: React.MouseEventHandler<HTMLButtonElement>;
   onClickDelete: React.MouseEventHandler<HTMLButtonElement>;
   onClickCheckbox: React.MouseEventHandler<HTMLDivElement>;
@@ -25,18 +26,24 @@ const SecondaryActionWrappear = styled.div`
 `;
 
 export const TodoListItem: React.VFC<Props> = (props) => {
-  const { checked, content, onClickEdit, onClickDelete, onClickCheckbox } =
-    props;
+  const {
+    id,
+    checked,
+    todoTitle,
+    onClickEdit,
+    onClickDelete,
+    onClickCheckbox,
+  } = props;
 
   return (
     <ListItem
       disablePadding
       secondaryAction={
         <SecondaryActionWrappear>
-          <IconButton onClick={onClickEdit}>
+          <IconButton data-id={id} onClick={onClickEdit}>
             <EditIcon />
           </IconButton>
-          <IconButton onClick={onClickDelete}>
+          <IconButton data-id={id} onClick={onClickDelete}>
             <DeleteIcon />
           </IconButton>
         </SecondaryActionWrappear>
@@ -44,9 +51,9 @@ export const TodoListItem: React.VFC<Props> = (props) => {
     >
       <ListItemButton>
         <ListItemIcon onClick={onClickCheckbox}>
-          <Checkbox checked={checked} />
+          <Checkbox data-id={id} checked={checked} />
         </ListItemIcon>
-        <ListItemText primary={content} />
+        <ListItemText primary={todoTitle} />
       </ListItemButton>
     </ListItem>
   );
